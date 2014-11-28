@@ -6,7 +6,8 @@ public class TestDateSort {
 		days[2] = new Date(2012,4,1);
 		days[3] = new Date(2014,1,3);
 		days[4] = new Date(2015,3,1); 
-		bubleSort(days);
+		//bubleSort(days);
+		selectSort(days);
 		for(int i = 1;i < 5;i++) {
 			System.out.println(days[i]);
 			}
@@ -25,9 +26,13 @@ public class TestDateSort {
 			
 			}
 		public static void selectSort(Date[] a) {
-			for(;;) {
-				for(;;) {
-					
+			for(int i = 0;i<a.length;i++) {
+				for(int j=i+1;j<a.length;j++) {
+					if(a[i].compare(a[j]) >0 ) {
+						Date temp = a[i];
+						a[i] = a[j];
+						a[j] = temp;
+						}
 					}
 				}
 			}

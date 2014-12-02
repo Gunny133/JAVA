@@ -6,8 +6,11 @@ public class TestDateSort {
 		days[2] = new Date(2012,4,1);
 		days[3] = new Date(2014,1,3);
 		days[4] = new Date(2015,3,1); 
+		Date date = new Date(2015,3,1);
 		//bubleSort(days);
 		selectSort(days);
+		int index = binarySearch(days,date);
+		System.out.println("index = :"+index);
 		for(int i = 1;i < 5;i++) {
 			System.out.println(days[i]);
 			}
@@ -36,6 +39,25 @@ public class TestDateSort {
 					}
 				}
 			}
+			
+			public static int binarySearch(Date[] days, Date date) {
+			int startPos = 0;
+			int endPos = days.length;
+			int m = (startPos + endPos)/2;
+			while (startPos <= endPos) {
+				if(date.compare(days[m]) == 0) { 
+					return m;
+				}
+				if(date.compare(days[m]) > 0) {
+					startPos = m+1;
+				}
+				if(date.compare(days[m]) < 0) {
+					endPos = m-1;
+				}
+				m = (startPos + endPos)/2;
+			}
+			return -1;
+			}
 	}
 
 class Date { 
@@ -57,6 +79,7 @@ class Date {
 							:day < date.day ? -1
 							: 0;
 			}
+			
 		public String toString() {
 				return "year:month:day--"+year+"-"+month+"-"+day;
 			}
